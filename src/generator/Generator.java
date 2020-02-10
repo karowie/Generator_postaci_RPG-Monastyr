@@ -122,10 +122,35 @@ public class Generator implements ActionListener {
         umiejetnosci.addActionListener(this);
         rapier.addActionListener(this);
         miecz.addActionListener(this);
-        widok.addActionListener(this);
+        widok.addActionListener(this);      
         
     }
    
+           static  ActionListener listener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource() instanceof JButton) {
+                String text = ((JButton) e.getSource()).getText();
+                ((JButton) e.getSource()).setText(Integer.toString(Integer.parseInt(text)-1));
+                
+            }
+        }
+        
+        
+    };
+//                  static  ActionListener listenerT = new ActionListener() {
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            if (e.getSource() instanceof JButton) {
+//                String text = ((JButton) e.getSource()).getText();
+//                ((JButton) e.getSource()).setText(Integer.toString(Integer.parseInt(text)-1));
+//                
+//            }
+//        }
+        
+        
+  //  };
+    
     
     @Override
     public void actionPerformed(ActionEvent e) {    
@@ -244,8 +269,10 @@ public class Generator implements ActionListener {
             
             }
         }
+       
 
-}     
+}  
+    
     
     private static void newButtons(ArrayList<JButton> a, int n, int height, int width, int above, int under, int left) {  //Funkcja tworząca nowe buttony i dodająca je do tablicy
         for(int i=0;i<n;i++)
@@ -254,6 +281,22 @@ public class Generator implements ActionListener {
             a.get(i).setBounds(left,above+i*under,width,height);
             p.add(a.get(i));
             a.get(i).setVisible(false);
+            
+        
+    
+        }
+    }
+    
+    private static void newButtonsN(ArrayList<JButton> a, int n, int height, int width, int above, int under, int left) {  //Funkcja tworząca nowe buttony i dodająca je do tablicy
+        for(int i=0;i<n;i++)
+        {
+            a.add(new javax.swing.JButton());
+            a.get(i).setBounds(left,above+i*under,width,height);
+            p.add(a.get(i));
+            a.get(i).setVisible(false);
+            a.get(i).addActionListener(listener);
+        
+    
         }
     }
     
@@ -359,43 +402,43 @@ public class Generator implements ActionListener {
         new Generator();
         newButtons(WGTB,8,50,150,30,55,20); //Tworzy puste buttony na nazwy współczynników głównych
         Named(WGTB,WGT); //Wpisuje nazwy umiejetnosci wspolczynnikow głównych do buttonów
-        newButtons(GWB,8,50,50,30,55,250);//Tworzy puste buttony na wartości współczynników głównych
+        newButtonsN(GWB,8,50,50,30,55,250);//Tworzy puste buttony na wartości współczynników głównych
         newButtons(RTB,1,50,150,30,55,450); //Tworzy puste buttony na nazwy ran
         RTB.get(0).setText("Rany");
-        newButtons(RB,1,50,50,30,55,320); //Tworzy puste buttony na wartości ran
+        newButtonsN(RB,1,50,50,30,55,320); //Tworzy puste buttony na wartości ran
         newButtons(WPTB,5,50,150,140,55,450); //Tworzy puste buttony na nazwy współczynników pomocniczych
         Named(WPTB,WPT); //Wpisuje nazwy umiejetnosci wspolczynnikow pomocniczych do buttonów
-        newButtons(PWB,5,50,50,140,55,320); //Tworzy puste buttony na wartości współczynników pomocniczych
+        newButtonsN(PWB,5,50,50,140,55,320); //Tworzy puste buttony na wartości współczynników pomocniczych
         newLabels(IPL,1,30,150,0,0,250); // Tworzy label z imieniem postaci
         newLabels(RMLL,2,30,150,470,200,20); //Tworzy dwa labele z lewej do akcji miecza i rapiera
         newLabels(RMLP,2,30,150,470,200,450); //Tworzy dwa labele z prawej do akcji miecza i rapiera
         newButtons(AZTB,2,50,150,505,55,20); //Tworzy puste buttony na nazwy akcji zwarcia
         Named(AZTB,AZT); //Wpisuje nazwy zwarcia do buttonow
-        newButtons(AZB,2,50,50,505,55,250); //Buttony na wartosc akcji zwarcia
+        newButtonsN(AZB,2,50,50,505,55,250); //Buttony na wartosc akcji zwarcia
         newButtons(ARTBL,1,50,150,615,55,20); //Tworzy button na nazwę ruchu po lewej
         ARTBL.get(0).setText("Ruch: kroki"); //Wpisuje tekst do buttonu ruchu po lewej
-        newButtons(ARBL,1,50,50,615,55,250); //Buttony na wartosc akcjiruchu po lewej
+        newButtonsN(ARBL,1,50,50,615,55,250); //Buttony na wartosc akcjiruchu po lewej
         newButtons(ARTB,3,50,150,505,55,450); // Tworzy buttony na nazwę akcji ruchu (Po pprawej)
         Named(ARTB,ART); //Wpisuje nazwy ruchu do buttonow
-        newButtons(ARB,3,50,50,505,55,320); //Buttony na wartosc akcji ruchu po prawej
+        newButtonsN(ARB,3,50,50,505,55,320); //Buttony na wartosc akcji ruchu po prawej
         newButtons(ARATB,7,50,150,705,55,20); //Tworzy puste buttony na nazwy akcji rapiera atak
         Named(ARATB,ARAT); //Wpisuje nazwy akacji rapiera atak do buttonow
-        newButtons(ARAB,7,50,50,705,55,250); //Buttony na wartosc akcji rapiera atak
+        newButtonsN(ARAB,7,50,50,705,55,250); //Buttony na wartosc akcji rapiera atak
         newButtons(AROTB,4,50,150,705,55,450); //Tworzy puste buttony na nazwy akcji rapiera obrona
         Named(AROTB,AROT); //Wpisuje nazwy akacji rapiera obrona do buttonow
-        newButtons(AROB,4,50,50,705,55,320); //Buttony na wartosc akcji rapiera obrona
+        newButtonsN(AROB,4,50,50,705,55,320); //Buttony na wartosc akcji rapiera obrona
         newButtons(AMATB,4,50,150,705,55,20); //Tworzy puste buttony na nazwy akcji miecza atak
         Named(AMATB,AMAT); //Wpisuje nazwy akacji miecza atak do buttonow
-        newButtons(AMAB,4,50,50,705,55,250); //Buttony na wartosc akcji miecza atak
+        newButtonsN(AMAB,4,50,50,705,55,250); //Buttony na wartosc akcji miecza atak
         newButtons(AMOTB,3,50,150,705,55,450); //Tworzy puste buttony na nazwy akcji miecza obrona
         Named(AMOTB,AMOT); //Wpisuje nazwy akacji miecz obrona do buttonow
-        newButtons(AMOB,3,50,50,705,55,320); //Buttony na wartosc akcji miecza obrona
+        newButtonsN(AMOB,3,50,50,705,55,320); //Buttony na wartosc akcji miecza obrona
         newButtons(UTBL,11,50,150,470,55,20); //Tworzy puste buttony umeijetnosci po lewej
         Named(UTBL,UTL); //Nazwy umeijetnosci po lewej
-        newButtons(UBL,11,50,50,470,55,250); //Buttony na wartosc umiejetnosci po lewej
+        newButtonsN(UBL,11,50,50,470,55,250); //Buttony na wartosc umiejetnosci po lewej
         newButtons(UTBP,11,50,150,470,55,450); //Tworzy puste buttony umeijetnosci po lewej
         Named(UTBP,UTP); //nazwy umiejetnosci po prawej
-        newButtons(UBP,11,50,50,470,55,320); //Buttony na wartosc umiejetnosci po prawej 
+        newButtonsN(UBP,11,50,50,470,55,320); //Buttony na wartosc umiejetnosci po prawej 
     }
     
     
