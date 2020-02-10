@@ -1,6 +1,7 @@
 package generator;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Scrollbar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +17,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 
 
@@ -88,7 +91,20 @@ public class Generator implements ActionListener {
      */
     Generator(){ 
         
-        //Ustawienie okna
+        try {
+            //Ustawienie okna
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Generator.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(Generator.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(Generator.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(Generator.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        p.setBackground(Color.LIGHT_GRAY);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Scrollbar scrollB1 = new Scrollbar(Scrollbar.VERTICAL, 0, 40, 0, 100);
         f.add(scrollB1,BorderLayout.EAST);
@@ -189,11 +205,17 @@ public class Generator implements ActionListener {
             
         }else if(e.getSource()==zapisz)
         {
-            try{
-                WP.zapis();
-                JOptionPane.showMessageDialog(null,"Postac zapisana!","Zapisywanie",JOptionPane.PLAIN_MESSAGE);
-            }catch(Exception error){
-                JOptionPane.showMessageDialog(null,"Cos poszlo nie tak. Nie udalo sie zapisac postaci.","Zapisywanie",JOptionPane.ERROR_MESSAGE);
+            if(!WP.imie.equals(""))
+            {
+                try{
+                    WP.zapis();
+                    JOptionPane.showMessageDialog(null,"Postac zapisana!","Zapisywanie",JOptionPane.PLAIN_MESSAGE);
+                }catch(Exception error){
+                    JOptionPane.showMessageDialog(null,"Cos poszlo nie tak. Nie udalo sie zapisac postaci.","Zapisywanie",JOptionPane.ERROR_MESSAGE);
+                }
+            }else
+            {
+                JOptionPane.showMessageDialog(null,"Najpierw musisz wylosowac albo wczytac postac.","Zapisywanie",JOptionPane.ERROR_MESSAGE);
             }
             
         }else if(e.getSource()==umiejetnosci)
