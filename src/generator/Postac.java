@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 class Postac {
 	
-    String imie;
+    String imie="";
     int SumaWspolczynnikowGlownych;
     int Rany = 0;
     int[] WspolczynnikiGlowne= new int[8];

@@ -74,7 +74,7 @@ public class Generator implements ActionListener {
     private static String[] AMAT = new String[] {"Ciecie zwykle","Ciecie z zamachu", "Ponowienie","Zbicie miecza"}; //Tablica nazw akcji miecz atak
     private static String[] AMOT = new String[] {"Odbicie","Zaslona","Wyprzedzenie"}; //Tablica nazw akcji miecz obrona
     private static String[] UTL = new String[] {"Atletyka","Wysportowanie","Rapier","Bron bitewna","Pistolet","Muszkiet","W. magiczna","Okultyzm","Blef","Czytanie emocji","Nasłuch. i wypatr."}; //Tablica nazw umiejetnosci z lewej
-    private static String[] UTP = new String[] {"Zbieranie infor.","Jezdziectwo","Post. ze zwierz.","Teologia","Historia","Naprawa","Opatrywanie","Przetrwanie","Ukrywanie","Plotki","Etykieta"}; //Tablica nazw umiejetnosci z  prawej
+    private static String[] UTP = new String[] {"Zbieranie informacji","Jezdziectwo","Post. ze zwierz.","Teologia","Historia","Naprawa","Opatrywanie","Przetrwanie","Ukrywanie","Plotki","Etykieta"}; //Tablica nazw umiejetnosci z  prawej
     private static ArrayList<JLabel> IPL = new ArrayList<JLabel>(); //Tworzy liste labeli na imie postaci
     private static ArrayList<JLabel> RMLL = new ArrayList<JLabel>(); //Tworzy liste labeli na Zwarcie, ruch  lewe
     private static ArrayList<JLabel> RMLP = new ArrayList<JLabel>(); //Tworzy liste labeli na Zwarcie, ruch  prawe
@@ -121,6 +121,7 @@ public class Generator implements ActionListener {
         zapisz.addActionListener(this);
         umiejetnosci.addActionListener(this);
         rapier.addActionListener(this);
+        miecz.addActionListener(this);
         widok.addActionListener(this);
         
     }
@@ -172,17 +173,24 @@ public class Generator implements ActionListener {
             
         }else if(e.getSource()==umiejetnosci)
         {
-            AllButtonsUnvisible();
-            MainButtonsVisible();
-            LabelVisibility(RMLL,false);
-            LabelVisibility(RMLP,false);
-            Visibility(UTBL,true);
-            Visibility(UTBP,true);
-            Visibility(UBL,true);
-            Visibility(UBP,true);
+            if(!WP.imie.equals("")){
+             AllButtonsUnvisible();
+             MainButtonsVisible();
+             LabelVisibility(RMLL,false);
+             LabelVisibility(RMLP,false);
+             Visibility(UTBL,true);
+             Visibility(UTBP,true);
+             Visibility(UBL,true);
+             Visibility(UBP,true);
+            }
+            else{
+             JOptionPane.showMessageDialog(null,"Najpierw musisz wylosowac postac.","Widok",JOptionPane.ERROR_MESSAGE);   
+            
+            }
             
         }else if(e.getSource()==rapier)
         {
+            if(!WP.imie.equals("")){
             AllButtonsUnvisible();
             MainButtonsVisible();
         
@@ -202,9 +210,15 @@ public class Generator implements ActionListener {
             Visibility(ARAB,true);
             Visibility(AROTB,true);
             Visibility(AROB,true);
+        }
+            else{
+             JOptionPane.showMessageDialog(null,"Najpierw musisz wylosowac postac.","Widok",JOptionPane.ERROR_MESSAGE);   
+            
+            }
             
         }else if(e.getSource()==miecz)
         {
+            if(!WP.imie.equals("")){
             AllButtonsUnvisible();
             MainButtonsVisible();
         
@@ -224,6 +238,11 @@ public class Generator implements ActionListener {
             Visibility(AMAB,true);
             Visibility(AMOTB,true);
             Visibility(AMOB,true);
+        }
+            else{
+             JOptionPane.showMessageDialog(null,"Najpierw musisz wylosowac postac.","Widok",JOptionPane.ERROR_MESSAGE);   
+            
+            }
         }
 
 }     
