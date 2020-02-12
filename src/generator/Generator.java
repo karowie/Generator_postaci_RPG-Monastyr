@@ -43,6 +43,7 @@ public class Generator implements ActionListener {
     //Tworzenie postaci
     Postac WP = new Postac(); 
     
+    
     //Buttony i Labele
     private static ArrayList<JButton> GWB = new ArrayList<JButton>(); //Tworzy tablicę małych buttonów współczynników głównych
     private static ArrayList<JButton> PWB = new ArrayList<JButton>(); //Tworzy tablicę małych buttonów współczynników pomocniczych
@@ -81,10 +82,14 @@ public class Generator implements ActionListener {
     private static ArrayList<JLabel> IPL = new ArrayList<JLabel>(); //Tworzy liste labeli na imie postaci
     private static ArrayList<JLabel> RMLL = new ArrayList<JLabel>(); //Tworzy liste labeli na Zwarcie, ruch  lewe
     private static ArrayList<JLabel> RMLP = new ArrayList<JLabel>(); //Tworzy liste labeli na Zwarcie, ruch  prawe
+    private static ArrayList<JLabel> WO = new ArrayList<JLabel>(); //Tworzy liste labeli na informacje i wpisy
+    private static ArrayList<JButton> WB = new ArrayList<JButton>(); //Tworzy button do wczytania postaci
     private static String[] MLTL = new String[] {"Zwarcie i atak w ruchu","Miecz: atak"}; //Tablica nazw lewej strony labeli miecza
     private static String[] MLTP = new String[] {"Ruch: obrona","Miecz: obrona"}; //Tablica nazw prawej strony labeli miecza
     private static String[] RLTL = new String[] {"Zwarcie i atak w ruchu","Rapier: atak"}; //Tablica nazw lewej strony labeli rapiera
     private static String[] RLTP = new String[] {"Ruch: obrona","Rapier: obrona"}; //Tablica nazw prawej strony labeli rapiera
+    
+    
     
     /**
      *
@@ -128,6 +133,7 @@ public class Generator implements ActionListener {
         mb.add(postac); mb.add(widok); 
         f.setJMenuBar(mb); 
        
+        
         
         
         
@@ -178,6 +184,7 @@ public class Generator implements ActionListener {
                 Logger.getLogger(Generator.class.getName()).log(Level.SEVERE, null, ex);
             }
             AllButtonsUnvisible();
+            LabelVisibility(WO,false);
             LabelVisibility(RMLL,false);
             LabelVisibility(RMLP,false);
         
@@ -202,6 +209,13 @@ public class Generator implements ActionListener {
             MainButtonsVisible();
         }else if(e.getSource()==wczytaj)
         {
+            AllButtonsUnvisible();
+            LabelVisibility(WO,false);
+            LabelVisibility(RMLL,false);
+            LabelVisibility(RMLP,false);
+                    
+            WO.get(1).setVisible(true);
+            WB.get(0).setVisible(true);
             
         }else if(e.getSource()==zapisz)
         {
@@ -225,6 +239,7 @@ public class Generator implements ActionListener {
              MainButtonsVisible();
              LabelVisibility(RMLL,false);
              LabelVisibility(RMLP,false);
+             LabelVisibility(WO,false);
              Visibility(UTBL,true);
              Visibility(UTBP,true);
              Visibility(UBL,true);
@@ -246,6 +261,7 @@ public class Generator implements ActionListener {
         
             LabelVisibility(RMLL,true);
             LabelVisibility(RMLP,true);
+            LabelVisibility(WO,false);
         
             Visibility(AZB,true);
             Visibility(ARBL,true);
@@ -274,6 +290,7 @@ public class Generator implements ActionListener {
         
             LabelVisibility(RMLL,true);
             LabelVisibility(RMLP,true);
+            LabelVisibility(WO,false);
         
             Visibility(AZB,true);
             Visibility(ARBL,true);
@@ -286,11 +303,47 @@ public class Generator implements ActionListener {
             Visibility(AMOTB,true);
             Visibility(AMOB,true);
         }
+          
             else{
              JOptionPane.showMessageDialog(null,"Najpierw musisz wylosowac postac.","Widok",JOptionPane.ERROR_MESSAGE);   
             
             }
+            
         }
+         else if(e.getSource()==WB.get(0)){
+                String WczytPath =WO.get(1).getText();
+                WO.get(1).setText("");
+                
+                  try {
+            WP.wczytaj(WczytPath);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Generator.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            AllButtonsUnvisible();
+            LabelVisibility(WO,false);
+            LabelVisibility(RMLL,false);
+            LabelVisibility(RMLP,false);
+        
+            IPL.get(0).setVisible(true);
+            IPL.get(0).setText(WP.imie);
+            setButtonText(GWB,WP.WspolczynnikiGlowne);
+            setButtonText(PWB,WP.WspolczynnikiPomocnicze);
+            setButtonText(AZB,WP.AkcjeZwarcie);
+            setButtonText(ARAB,WP.AkcjeRapierAtak);
+            setButtonText(AROB,WP.AkcjeRapierObrona);
+            setButtonText(AMAB,WP.AkcjeMieczAtak);
+            setButtonText(AMOB,WP.AkcjeMieczObrona);
+            for(int i=0; i<11;i++)
+                UBL.get(i).setText(Integer.toString(WP.Umiejetnosci[i]));
+            for(int i=11; i<22;i++)
+                UBP.get(i-11).setText(Integer.toString(WP.Umiejetnosci[i]));
+            ARBL.get(0).setText(Integer.toString(WP.AkcjeRuch[0]));
+            for(int i=1; i<4;i++)
+                ARB.get(i-1).setText(Integer.toString(WP.AkcjeRuch[i]));
+            RB.get(0).setText(Integer.toString(WP.Rany));
+
+            MainButtonsVisible();
+            }
        
 
 }  
@@ -422,6 +475,12 @@ public class Generator implements ActionListener {
     public static void main(String[] args) {
         
         new Generator();
+        
+        
+        
+        newLabels(WO,2,50,300,200,55,250);//Tworzy puste Labele na komunikaty
+        newButtons(WB,1,50,100,255,55,5550); //Tworzy Button na wczytanie posatci
+        WB.get(0).setText("Wczytaj");
         newButtons(WGTB,8,50,150,30,55,20); //Tworzy puste buttony na nazwy współczynników głównych
         Named(WGTB,WGT); //Wpisuje nazwy umiejetnosci wspolczynnikow głównych do buttonów
         newButtonsN(GWB,8,50,50,30,55,250);//Tworzy puste buttony na wartości współczynników głównych
@@ -461,6 +520,10 @@ public class Generator implements ActionListener {
         newButtons(UTBP,11,50,150,470,55,450); //Tworzy puste buttony umeijetnosci po lewej
         Named(UTBP,UTP); //nazwy umiejetnosci po prawej
         newButtonsN(UBP,11,50,50,470,55,320); //Buttony na wartosc umiejetnosci po prawej 
+        
+        WO.get(0).setText("Wylosuj lub wczytaj swoja postac.");
+        WO.get(0).setVisible(true);
+        
     }
     
     

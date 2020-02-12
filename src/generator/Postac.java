@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 class Postac {
 	
     String imie="";
+    
     int SumaWspolczynnikowGlownych;
     int Rany = 0;
     int[] WspolczynnikiGlowne= new int[8];
@@ -23,11 +24,13 @@ class Postac {
     int[] AkcjeRapierObrona = new int[4];
     int[] AkcjeMieczAtak = new int [4];
     int[] AkcjeMieczObrona = new int[3];
+    String[] Wczyt = new String[80];
     Random generator= new Random();
 	 
     public void losujpostac() throws FileNotFoundException 
     {
         //name of this creature
+        
         int plec= generator.nextInt(2);
         String[] meskieimiona = new String[2000];
         String[] damskieimiona = new String[2000];
@@ -250,7 +253,52 @@ public void Rany(Boolean ranka) {
 	WspolczynnikiPomocnicze[4]=(int)(WspolczynnikiGlowne[0]+WspolczynnikiGlowne[3]+WspolczynnikiGlowne[5])/3;
     }
 	
-
+public void wczytaj(String path)
+{
+    try {
+            int i =0;
+            File wczyt=new File(path);
+            BufferedReader br = new BufferedReader(new FileReader(wczyt));
+            String input;
+            while ((input = br.readLine()) != null) {
+                Wczyt[i]=input;
+                i++;
+                }
+            br.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Postac.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            this.imie=Wczyt[0];
+            SumaWspolczynnikowGlownych = Integer.parseInt(Wczyt[1]);
+            Rany = Integer.parseInt(Wczyt[2]);
+            for (int i = 3;i<11;i++){
+                WspolczynnikiGlowne[i-3] = Integer.parseInt(Wczyt[i]);
+            }
+            for (int i = 11;i<15;i++){
+                WspolczynnikiPomocnicze[i-11] = Integer.parseInt(Wczyt[i]);
+            }
+            for (int i =15;i<37;i++){
+                Umiejetnosci[i-15]=Integer.parseInt(Wczyt[i]);
+            }
+            for (int i =37;i<41;i++){
+                AkcjeRuch[i-37]=Integer.parseInt(Wczyt[i]);
+            }
+            for (int i=41;i<43;i++){
+                AkcjeZwarcie[i-41]=Integer.parseInt(Wczyt[i]);
+            }
+            for(int i=43;i<50;i++){
+                AkcjeRapierAtak[i-43]=Integer.parseInt(Wczyt[i]);
+            }
+            for(int i = 50;i<54;i++){
+                AkcjeRapierObrona[i-50]=Integer.parseInt(Wczyt[i]);
+            }
+            for(int i =54;i<58;i++){
+                AkcjeMieczAtak[i-54]=Integer.parseInt(Wczyt[i]);
+            }
+            for(int i=58;i<61;i++){
+                AkcjeMieczObrona[i-58]=Integer.parseInt(Wczyt[i]);
+            }
+}
 //SAvE YOUR CHARACTER! NEW IMPOSSIBLE OPTION! ONLY HERE XD
     public void zapis() {
 	try {
