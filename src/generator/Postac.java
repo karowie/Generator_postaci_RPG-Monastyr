@@ -253,11 +253,10 @@ public void Rany(Boolean ranka) {
 	WspolczynnikiPomocnicze[4]=(int)(WspolczynnikiGlowne[0]+WspolczynnikiGlowne[3]+WspolczynnikiGlowne[5])/3;
     }
 	
-public void wczytaj(String path)
+public void wczytaj(File wczyt)
 {
     try {
             int i =0;
-            File wczyt=new File(path);
             BufferedReader br = new BufferedReader(new FileReader(wczyt));
             String input;
             while ((input = br.readLine()) != null) {
@@ -302,7 +301,7 @@ public void wczytaj(String path)
 //SAvE YOUR CHARACTER! NEW IMPOSSIBLE OPTION! ONLY HERE XD
     public void zapis() {
 	try {
-            String path = "zapisanapostac."+" "+ this.imie +".txt";
+            String path = "zapisanapostac."+ " "+ this.imie +".txt";
             PrintStream zapis = new PrintStream(path);
             zapis.println(imie);
             zapis.println(SumaWspolczynnikowGlownych);
@@ -336,9 +335,9 @@ public void wczytaj(String path)
             }
             zapis.flush();
             zapis.close();
-            System.out.print("Zapisano postać");
+            //System.out.print("Zapisano postać");
 	} catch (FileNotFoundException e) {
-            System.out.print("Blad!" +e.getLocalizedMessage());
+            //System.out.print("Blad!" +e.getLocalizedMessage());
             
 	}
     }
