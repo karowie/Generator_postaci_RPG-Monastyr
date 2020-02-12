@@ -160,7 +160,7 @@ public class Generator implements ActionListener {
         newButtonsN(GWB,8,25,50,30,30,250);//Tworzy puste buttony na wartości współczynników głównych
         newButtons(RTB,1,25,150,30,30,450); //Tworzy puste buttony na nazwy ran
         RTB.get(0).setText("Rany");
-        newButtonsN(RB,1,25,50,30,30,320); //Tworzy puste buttony na wartości ran
+        newButtons(RB,1,25,50,30,30,320); //Tworzy puste buttony na wartości ran
         newButtons(WPTB,5,25,150,90,30,450); //Tworzy puste buttony na nazwy współczynników pomocniczych
         Named(WPTB,WPT); //Wpisuje nazwy umiejetnosci wspolczynnikow pomocniczych do buttonów
         newButtonsN(PWB,5,25,50,90,30,320); //Tworzy puste buttony na wartości współczynników pomocniczych
@@ -404,7 +404,28 @@ public class Generator implements ActionListener {
             
             }
             
-        }    
+        } 
+        else if(e.getSource()==RB.get(0)){
+              
+                WP.Rany(true);
+                
+        
+                WP.Rany--;
+                setButtonText(GWB,WP.WspolczynnikiGlowne);
+                setButtonText(PWB,WP.WspolczynnikiPomocnicze);
+                setButtonText(AZB,WP.AkcjeZwarcie);
+                setButtonText(ARAB,WP.AkcjeRapierAtak);
+                setButtonText(AROB,WP.AkcjeRapierObrona);
+                setButtonText(AMAB,WP.AkcjeMieczAtak);
+                setButtonText(AMOB,WP.AkcjeMieczObrona);
+                ARBL.get(0).setText(Integer.toString(WP.AkcjeRuch[0]));
+                for(int i=1; i<4;i++)
+                    ARB.get(i-1).setText(Integer.toString(WP.AkcjeRuch[i]));
+                RB.get(0).setText(Integer.toString(WP.Rany));
+
+                
+                
+        }
 }  
     
     
