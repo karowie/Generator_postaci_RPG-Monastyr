@@ -157,49 +157,51 @@ public class Generator implements ActionListener {
         newLabels(WO,2,25,300,200,30,200);//Tworzy puste Labele na komunikaty
         newButtons(WGTB,8,25,150,30,30,20); //Tworzy puste buttony na nazwy współczynników głównych
         Named(WGTB,WGT); //Wpisuje nazwy umiejetnosci wspolczynnikow głównych do buttonów
-        newButtonsN(GWB,8,25,50,30,30,250);//Tworzy puste buttony na wartości współczynników głównych
+        newButtonsN(GWB,8,25,60,30,30,250);//Tworzy puste buttony na wartości współczynników głównych
         newButtons(RTB,1,25,150,30,30,450); //Tworzy puste buttony na nazwy ran
         RTB.get(0).setText("Rany");
-        newButtons(RB,1,25,50,30,30,320); //Tworzy puste buttony na wartości ran
+        newButtons(RB,1,25,60,30,30,320); //Tworzy puste buttony na wartości ran
         newButtons(WPTB,5,25,150,90,30,450); //Tworzy puste buttony na nazwy współczynników pomocniczych
         Named(WPTB,WPT); //Wpisuje nazwy umiejetnosci wspolczynnikow pomocniczych do buttonów
-        newButtonsN(PWB,5,25,50,90,30,320); //Tworzy puste buttony na wartości współczynników pomocniczych
+        newButtonsN(PWB,5,25,60,90,30,320); //Tworzy puste buttony na wartości współczynników pomocniczych
         newLabels(IPL,1,25,150,0,0,250); // Tworzy label z imieniem postaci
         newLabels(RMLL,2,25,150,270,120,20); //Tworzy dwa labele z lewej do akcji miecza i rapiera
         newLabels(RMLP,2,25,150,270,120,450); //Tworzy dwa labele z prawej do akcji miecza i rapiera
         newButtons(AZTB,2,25,150,300,30,20); //Tworzy puste buttony na nazwy akcji zwarcia
         Named(AZTB,AZT); //Wpisuje nazwy zwarcia do buttonow
-        newButtonsN(AZB,2,25,50,300,30,250); //Buttony na wartosc akcji zwarcia
+        newButtonsN(AZB,2,25,60,300,30,250); //Buttony na wartosc akcji zwarcia
         newButtons(ARTBL,1,25,150,360,30,20); //Tworzy button na nazwę ruchu po lewej
         ARTBL.get(0).setText("Ruch: kroki"); //Wpisuje tekst do buttonu ruchu po lewej
-        newButtonsN(ARBL,1,25,50,360,30,250); //Buttony na wartosc akcjiruchu po lewej
+        newButtonsN(ARBL,1,25,60,360,30,250); //Buttony na wartosc akcjiruchu po lewej
         newButtons(ARTB,3,25,150,300,30,450); // Tworzy buttony na nazwę akcji ruchu (Po pprawej)
         Named(ARTB,ART); //Wpisuje nazwy ruchu do buttonow
-        newButtonsN(ARB,3,25,50,300,30,320); //Buttony na wartosc akcji ruchu po prawej
+        newButtonsN(ARB,3,25,60,300,30,320); //Buttony na wartosc akcji ruchu po prawej
         newButtons(ARATB,7,25,150,420,30,20); //Tworzy puste buttony na nazwy akcji rapiera atak
         Named(ARATB,ARAT); //Wpisuje nazwy akacji rapiera atak do buttonow
-        newButtonsN(ARAB,7,25,50,420,30,250); //Buttony na wartosc akcji rapiera atak
+        newButtonsN(ARAB,7,25,60,420,30,250); //Buttony na wartosc akcji rapiera atak
         newButtons(AROTB,4,25,150,420,30,450); //Tworzy puste buttony na nazwy akcji rapiera obrona
         Named(AROTB,AROT); //Wpisuje nazwy akacji rapiera obrona do buttonow
-        newButtonsN(AROB,4,25,50,420,30,320); //Buttony na wartosc akcji rapiera obrona
+        newButtonsN(AROB,4,25,60,420,30,320); //Buttony na wartosc akcji rapiera obrona
         newButtons(AMATB,4,25,150,420,30,20); //Tworzy puste buttony na nazwy akcji miecza atak
         Named(AMATB,AMAT); //Wpisuje nazwy akacji miecza atak do buttonow
-        newButtonsN(AMAB,4,25,50,420,30,250); //Buttony na wartosc akcji miecza atak
+        newButtonsN(AMAB,4,25,60,420,30,250); //Buttony na wartosc akcji miecza atak
         newButtons(AMOTB,3,25,150,420,30,450); //Tworzy puste buttony na nazwy akcji miecza obrona
         Named(AMOTB,AMOT); //Wpisuje nazwy akacji miecz obrona do buttonow
-        newButtonsN(AMOB,3,25,50,420,30,320); //Buttony na wartosc akcji miecza obrona
+        newButtonsN(AMOB,3,25,60,420,30,320); //Buttony na wartosc akcji miecza obrona
         newButtons(UTBL,11,25,150,270,30,20); //Tworzy puste buttony umeijetnosci po lewej
         Named(UTBL,UTL); //Nazwy umeijetnosci po lewej
-        newButtonsN(UBL,11,25,50,270,30,250); //Buttony na wartosc umiejetnosci po lewej
+        newButtonsN(UBL,11,25,60,270,30,250); //Buttony na wartosc umiejetnosci po lewej
         newButtons(UTBP,11,25,150,270,30,450); //Tworzy puste buttony umeijetnosci po lewej
         Named(UTBP,UTP); //nazwy umiejetnosci po prawej
-        newButtonsN(UBP,11,25,50,270,30,320); //Buttony na wartosc umiejetnosci po prawej
+        newButtonsN(UBP,11,25,60,270,30,320); //Buttony na wartosc umiejetnosci po prawej
         input.setBounds(100,250,460,25);
         input.setVisible(false);
         p.add(input);
         
         WO.get(0).setText("Wylosuj lub wczytaj swoja postac.");
-        WO.get(0).setVisible(true);    
+        WO.get(0).setVisible(true); 
+        RB.get(0).addActionListener(this);
+        RTB.get(0).addActionListener(this);
     }
    
            static  ActionListener listener = new ActionListener() {
@@ -410,6 +412,24 @@ public class Generator implements ActionListener {
                 WP.Rany(true);
                 
         
+                WP.Rany++;
+                setButtonText(GWB,WP.WspolczynnikiGlowne);
+                setButtonText(PWB,WP.WspolczynnikiPomocnicze);
+                setButtonText(AZB,WP.AkcjeZwarcie);
+                setButtonText(ARAB,WP.AkcjeRapierAtak);
+                setButtonText(AROB,WP.AkcjeRapierObrona);
+                setButtonText(AMAB,WP.AkcjeMieczAtak);
+                setButtonText(AMOB,WP.AkcjeMieczObrona);
+                ARBL.get(0).setText(Integer.toString(WP.AkcjeRuch[0]));
+                for(int i=1; i<4;i++)
+                    ARB.get(i-1).setText(Integer.toString(WP.AkcjeRuch[i]));
+                RB.get(0).setText(Integer.toString(WP.Rany));     
+        }
+        else if(e.getSource()==RTB.get(0)){
+              
+                WP.Rany(false);
+                
+        
                 WP.Rany--;
                 setButtonText(GWB,WP.WspolczynnikiGlowne);
                 setButtonText(PWB,WP.WspolczynnikiPomocnicze);
@@ -421,10 +441,7 @@ public class Generator implements ActionListener {
                 ARBL.get(0).setText(Integer.toString(WP.AkcjeRuch[0]));
                 for(int i=1; i<4;i++)
                     ARB.get(i-1).setText(Integer.toString(WP.AkcjeRuch[i]));
-                RB.get(0).setText(Integer.toString(WP.Rany));
-
-                
-                
+                RB.get(0).setText(Integer.toString(WP.Rany));     
         }
 }  
     

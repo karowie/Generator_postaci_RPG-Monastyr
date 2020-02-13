@@ -199,47 +199,47 @@ public void wyswietlpostac() {
 public void Rany(Boolean ranka) {
 		
     if(ranka==false) {
-	for(int i=0;i<3;i++) {
+	for(int i=0;i<2;i++) {
             AkcjeZwarcie[i]++;
 	}
-	for(int i=0;i<4;i++) {
+	for(int i=0;i<3;i++) {
             AkcjeMieczObrona[i]++;
 	}
-	for(int i=0;i<5;i++) {
+	for(int i=0;i<4;i++) {
             AkcjeRuch[i]++;
             AkcjeRapierObrona[i]++;
             AkcjeMieczAtak[i]++;
 	}
-	for(int i=0;i<6;i++) {
+	for(int i=0;i<5;i++) {
             WspolczynnikiPomocnicze[i]++;
 	}
-	for(int i=0;i<8;i++) {
+	for(int i=0;i<7;i++) {
             AkcjeRapierAtak[i]++;
 	}
-	for(int i=0;i<9;i++) {
+	for(int i=0;i<8;i++) {
             WspolczynnikiGlowne[i]++;
 	}
 
     }
     else {
-        for(int i=0;i<3;i++) {
+        for(int i=0;i<2;i++) {
             AkcjeZwarcie[i]--;
 	}
-	for(int i=0;i<4;i++) {
+	for(int i=0;i<3;i++) {
             AkcjeMieczObrona[i]--;
 	}
-	for(int i=0;i<5;i++) {
+	for(int i=0;i<4;i++) {
             AkcjeRuch[i]--;
             AkcjeRapierObrona[i]--;
             AkcjeMieczAtak[i]--;
 	}
-	for(int i=0;i<6;i++) {
+	for(int i=0;i<5;i++) {
             WspolczynnikiPomocnicze[i]--;
 	}
-	for(int i=0;i<8;i++) {
+	for(int i=0;i<7;i++) {
             AkcjeRapierAtak[i]--;
 	}
-	for(int i=0;i<9;i++) {
+	for(int i=0;i<8;i++) {
             WspolczynnikiGlowne[i]--;
 	}
     }
